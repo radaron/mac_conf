@@ -1,0 +1,45 @@
+[user]
+
+    name = Aron Radics
+    email = ajradics@hearsaycorp.com
+
+[alias]
+
+    co = checkout
+    ci = commit
+    br = branch
+    st = status
+    tree = log --graph --pretty=oneline --abbrev-commit --all --decorate
+    dtree = log --graph --pretty=oneline --abbrev-commit --all --decorate --date-order
+    fa-all = log --all --decorate --graph --pretty=format:'%Cred%h%Creset -%Cgreen(%ci) %C(bold blue)<%an>%Creset %C(yellow)%d%Creset %s' --abbrev-commit
+    fa = log --decorate --graph --pretty=format:'%Cred%h%Creset -%Cgreen(%ci) %C(bold blue)<%an, %ae>%Creset %C(yellow)%d%Creset %s' --abbrev-commit
+    d = difftool
+    pop = stash pop
+    sl = stash list
+    f = fetch
+    wl = worktree list
+
+
+# forrás: http://stackoverflow.com/questions/16307091/make-git-status-show-unmodified-unchanged-tracked-files
+    ls-fstatus = "! cd $PWD/$GIT_PREFIX; git ls-files -cdmoskt --abbrev=8 | while read -r line; do \
+        fn=$(echo \"$line\" | sed \"s/.*\\s\\([[:print:]]\\+\\)/\\1/\"); \
+        st=$(git status -s "$fn" | printf \"%-02s \" $(sed \"s/\\([[:print:]]\\+\\)\\s.*/\\1/\")); \
+        echo \"$st- $line\"; \
+      done "
+
+
+[push]
+    default = current
+[color]
+    ui = true
+    branch = auto
+    diff = auto
+    interactive = auto
+    status = auto
+[diff]
+    tool = vimdiff
+[difftool]
+    prompt = false
+[core]
+    trustctime = false
+	editor = nvim
